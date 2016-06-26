@@ -1,0 +1,13 @@
+<nav class='navbar navbar-default'>
+    <div class='container-fluid'>
+        <ul class='nav navbar-nav'>
+            <li ng-class='{ live: PAGE === "main" }'><a href='#/'>Main </a></li>
+            <li ng-class='{ live: PAGE === "notes" }'><a href='#/notes'>Notes </a></li>
+       </ul>
+        <ul class='nav navbar-nav navbar-right'>                      
+            <li ng-class='{ live: PAGE === "login" }' ng-hide='USER'><a ng-href='#/login'>Login </a></li>
+            <li ng-class='{ live: PAGE === "register" }' ng-hide='USER'><a ng-href='#/register'>Register </a></li>            
+            <li ng-class='{ live: PAGE === "logout" }' ng-if='USER'><a href='#/logout'>Logout </a></li>            
+        </ul>
+    </div>
+</nav>

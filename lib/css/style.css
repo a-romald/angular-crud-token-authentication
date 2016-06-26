@@ -1,0 +1,79 @@
+body {
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.42857;
+	padding: 20px; padding-top: 0;
+}
+nav.navbar {background-color: #66CC99; border-radius: 5px; padding:5px 10px;}
+nav.navbar ul.nav li a  {color: #FFFFFF; font-size: 17px; font-weight: bold;}
+nav.navbar ul.nav li a:hover {color: #6699CC;}
+nav.navbar ul.nav li a:active {color: #6699CC;}
+.live {color: red; font-size: 18px;}
+
+/* Toastr*/
+.toast-top-right {
+    top: 80px;    
+}
+
+/*Table*/
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/*Pagination*/
+.pagination {
+  display: inline-block;
+}
+.pagination:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.pagination li {
+  cursor: pointer;
+}
+.pagination-wrap {
+  text-align: center;
+}
+
+/*Buttons*/
+.icon-input-btn{
+    display: inline-block;
+    position: relative;
+}
+.icon-input-btn input[type="submit"]{
+    padding-left: 1.5em;
+}
+.icon-input-btn .glyphicon{
+    display: inline-block;
+    position: absolute;
+    left: 0.65em;
+    top: 30%;
+    color: #ffffff;
+}
+
+/*Validation*/
+input.ng-dirty, textarea.ng-dirty {
+    background-color: red;
+}
+/*input.ng-valid {
+    border: 3px solid darkred;
+}*/
+input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty {
+     background-color: #FA787E;
+     border: 3px solid black;
+}
+input.ng-valid.ng-dirty, textarea.ng-valid.ng-dirty {
+     background-color: #78FA89;
+}
+input.ng-valid.ng-touched, textarea.ng-valid.ng-touched {
+     background-color: #78FA89;
+}
+
+.form-group .help-block {
+  display: none;
+}
+.form-group.has-error .help-block {
+  display: block;
+}

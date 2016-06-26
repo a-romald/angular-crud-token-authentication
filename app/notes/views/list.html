@@ -1,0 +1,77 @@
+<h3 class="text-center">{{note.title}}</h3>
+
+<div class="clearfix col-md-offset-1" ng-if='USER'>
+	<p class="pull-left" style="margin-left:20px;">
+		<a class="btn btn-success" href="#/note/create">
+			<span class="glyphicon glyphicon-plus"></span>
+			Create note
+		</a>
+	</p>
+</div>
+
+
+<div class="col-md-8 col-md-offset-1" ng-cloak>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th class="col-md-2">
+					<a data-sort="id" ng-click="sort('id')" style="cursor:pointer;">
+						ID
+						<i class="glyphicon" ng-class="{ 
+			                  'glyphicon-chevron-up': isSortUp('id'),
+			                  'glyphicon-chevron-down': isSortDown('id')
+			                }">              
+			            </i>
+					</a>
+				</th>
+				<th class="col-md-8">
+					<a data-sort="title" ng-click="sort('title')" style="cursor:pointer;">
+						Title
+						<i class="glyphicon" ng-class="{ 
+			                  'glyphicon-chevron-up': isSortUp('title'),
+			                  'glyphicon-chevron-down': isSortDown('title')
+			                }">              
+			            </i>
+					</a>
+				</th>
+				<th class="action-column col-md-2">Control</th>				
+			</tr>
+			<tr clas="filters">
+				<td>
+					<input class="form-control" type="text" name="id" ng-model="id_search">
+				</td>
+				<td>
+					<input class="form-control" type="text" name="title" ng-model="title_search">
+				</td>
+			</tr>
+		</thead>
+		<tbody ng-if="records">
+		    <tr ng-repeat="item in note.allNotes | filter:{id:id_search, title:title_search} | orderBy:sortField:reverse | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+		        <td>{{item.id}}</td>
+		        <td>{{item.title}}</td>
+		        <td>
+		        	<a title="Просмотр" href="#/note/view/{{item.id}}">
+		        		<span class="glyphicon glyphicon-eye-open"> </span>
+					</a>
+					&nbsp;
+					<a title="Редактирование" href="#/note/edit/{{item.id}}">
+		        		<span class="glyphicon glyphicon-pencil"> </span>
+					</a>
+					&nbsp;
+					<a title="Удаление" ng-href="#/note/delete/{{item.id}}" ng-click="note.delNote(item.id)" style="cursor:pointer;">
+		        		<span class="glyphicon glyphicon-trash"> </span>
+					</a>
+				</td>	        
+		    </tr>
+		</tbody>
+	</table>
+	<ul class="pagination">
+		<li><a href="" ng-hide="pagination.page == 0" ng-click="pagination.prevPage()">&laquo;</a></li>
+		<li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
+		  <a href="" ng-click="pagination.toPageId(n)">{{n + 1}}</a>
+		</li>
+		<li><a href="" ng-click="pagination.nextPage()">&raquo;</a></li>
+	</ul>
+	<div ng-hide="note.allNotes.length">No items found</div>
+	<p ng-show="note.allNotes.length">Total notes: {{note.allNotes.length}}</p>
+</div>

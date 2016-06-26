@@ -1,0 +1,51 @@
+<h3 class="col-md-offset-3">{{note.editTitle}}</h3>
+<p>&nbsp;</p>
+<div>
+	<form id="noteEditForm" class="form-horizontal" name="noteEditForm" novalidate role="form" ng-submit="note.updateNote()">		
+		<div class="error-summary" style="display:none"></div>
+		
+		<div class="form-group" ng-class="{'has-error' : noteEditForm.title.$invalid && noteEditForm.title.$dirty}">
+			<label class="control-label col-sm-3" for="note-title">Title</label>
+			<div class="col-sm-6">
+				<input id="title" class="form-control" type="text" ng-minlength="3" ng-maxlength="100" name="title" ng-model="note.editNote.title" ng-required="note.shouldShow()">
+				
+				<span class="help-block help-block-error" 
+                  ng-if="noteEditForm.title.$error.required">Title is required
+                </span>
+                <span class="help-block help-block-error"
+                  ng-if="noteEditForm.title.$error.minlength">Title must contain more than 3 symbols 
+                </span>
+			</div>		
+		</div>
+
+		<div class="form-group" ng-class="{'has-error' : noteEditForm.content.$invalid && noteEditForm.content.$dirty}">
+			<label class="control-label col-sm-3" for="note-content">Content</label>
+			<div class="col-sm-6">
+				<textarea id="note-content" class="form-control" rows="4" ng-minlength="3" ng-maxlength="1000" name="content" ng-model="note.editNote.content" ng-required="note.shouldShow()"></textarea>
+				
+				<span class="help-block help-block-error" 
+                  ng-if="noteEditForm.content.$error.required">Content is required
+                </span>
+                <span class="help-block help-block-error"
+                  ng-if="noteEditForm.content.$error.minlength">Content must contain more than 3 symbols 
+                </span>
+			</div>		
+		</div>
+
+		<div class="col-sm-6 col-sm-offset-3">
+			<input id="id" class="form-control" type="hidden" name="id" ng-model="note.editNote.id">
+		</div>	
+		
+	<hr>
+
+		<div style="text-align:center">			
+			<span class="icon-input-btn">
+				<span class="glyphicon glyphicon-check"></span> 
+				<input type="submit" class="btn btn-primary btn-lg" value="Update"  ng-click="note.updateNote()" ng-disabled="noteEditForm.$invalid"/>
+			</span>
+			<input type="button" class="btn btn-default btn-lg" value="Cancel"
+               ng-click="note.cancelForm()" />
+		</div>
+
+	</form>
+</div>

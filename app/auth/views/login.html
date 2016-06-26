@@ -1,0 +1,37 @@
+<h3 class="col-md-offset-3">{{auth.title}}</h3>
+<p>&nbsp;</p>
+<div>
+	<form id="loginForm" class="form-horizontal" name="loginForm" novalidate role="form" ng-submit="auth.logUser()">		
+		<div class="error-summary" style="display:none"></div>
+		
+		<div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$dirty}">
+			<label class="control-label col-sm-3" for="title">Email</label>
+			<div class="col-sm-6">
+				<input id="email" class="form-control" type="email" name="email" ng-model="auth.currentUser.email" ng-required="auth.shouldShow()" />
+				<span class="help-block" ng-show="loginForm.email.$invalid  && registerForm.email.$dirty">A valid email is required
+				</span>
+			</div>		
+		</div>
+
+		<div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && loginForm.password.$dirty}">
+			<label class="control-label col-sm-3" for="password">Password</label>
+			<div class="col-sm-6">
+				<input id="password"  type="password" class="form-control" ng-minlength="6" ng-maxlength="30" name="password" ng-model="auth.currentUser.password" ng-required="auth.shouldShow()" />
+				
+				<span class="help-block help-block-error" 
+                  ng-if="registerForm.password.$error.required">Password is required
+                </span>                
+			</div>
+		</div>		
+		
+	<hr>
+
+		<div style="text-align:center">			
+			<span class="icon-input-btn">
+				<span class="glyphicon glyphicon-check"></span> 
+				<input type="submit" class="btn btn-primary btn-lg" value="Login"  ng-click="auth.logUser()" ng-disabled="registerForm.$invalid"/>
+			</span>			
+		</div>
+
+	</form>
+</div>

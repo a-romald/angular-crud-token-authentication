@@ -1,0 +1,43 @@
+<!doctype html>
+<html  lang="en" ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"
+              integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="
+              crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.7/angular-route.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <link rel="stylesheet" href="lib/css/style.css">
+        <!-- Angular App -->
+       	<script type="text/javascript" src="app/app.js"></script>
+       	<script type="text/javascript" src="app/main/MainCtrl.js"></script>
+       	<script type="text/javascript" src="app/notes/controllers/NoteCtrl.js"></script>
+		<script type="text/javascript" src="app/notes/services/Note.js"></script>
+        <script type="text/javascript" src="app/notes/services/simplePagination.js"></script>
+        <script type="text/javascript" src="app/auth/controllers/AuthCtrl.js"></script>
+        <script type="text/javascript" src="app/auth/services/Auth.js"></script>        
+       	
+        <title>Angular CRUD App</title>        
+    </head>
+    <body>    	
+
+    	<div class="row">
+    		<div class="container">
+    			<div class='col-md-12' ng-include="'app/nav/nav.html'"></div>
+    		</div>
+    	</div>
+
+		<div class="row">
+			<div class="container">
+				<div  class='col-md-12' ng-view></div>
+			</div>
+		</div>        
+        
+    </body>
+</html>

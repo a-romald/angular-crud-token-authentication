@@ -1,0 +1,47 @@
+<h3 class="col-md-offset-3">{{note.title}}</h3>
+<p>&nbsp;</p>
+<div>
+	<form id="noteCreateForm" class="form-horizontal" name="noteCreateForm" novalidate role="form" ng-submit="note.createNote()">		
+		<div class="error-summary" style="display:none"></div>
+		
+		<div class="form-group" ng-class="{'has-error' : noteCreateForm.title.$invalid && noteCreateForm.title.$dirty}">
+			<label class="control-label col-sm-3" for="note-title">Title</label>
+			<div class="col-sm-6">
+				<input id="title" class="form-control" type="text" ng-minlength="3" ng-maxlength="100" name="title" ng-model="note.newNote.title" ng-required="note.shouldShow()">
+				
+				<span class="help-block help-block-error" 
+                  ng-if="noteCreateForm.title.$error.required">Title is required
+                </span>
+                <span class="help-block help-block-error"
+                  ng-if="noteCreateForm.title.$error.minlength">Title must contain more than 3 symbols 
+                </span>
+			</div>		
+		</div>
+
+		<div class="form-group" ng-class="{'has-error' : noteCreateForm.content.$invalid && noteCreateForm.content.$dirty}">
+			<label class="control-label col-sm-3" for="note-content">Content</label>
+			<div class="col-sm-6">
+				<textarea id="note-content" class="form-control" rows="4" ng-minlength="3" ng-maxlength="1000" name="content" ng-model="note.newNote.content" ng-required="note.shouldShow()"></textarea>
+				
+				<span class="help-block help-block-error" 
+                  ng-if="noteCreateForm.content.$error.required">Content is required
+                </span>
+                <span class="help-block help-block-error"
+                  ng-if="noteCreateForm.content.$error.minlength">Content must contain more than 3 symbols 
+                </span>
+			</div>		
+		</div>		
+		
+	<hr>
+
+		<div style="text-align:center">			
+			<span class="icon-input-btn">
+				<span class="glyphicon glyphicon-check"></span> 
+				<input type="submit" class="btn btn-primary btn-lg" value="Create"  ng-click="note.createNote()" ng-disabled="noteCreateForm.$invalid"/>
+			</span>
+			<input type="button" class="btn btn-default btn-lg" value="Cancel"
+               ng-click="note.cancelForm()" />
+		</div>
+
+	</form>
+</div>
